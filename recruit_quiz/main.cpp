@@ -58,7 +58,7 @@ int main()
 
 	//円錐の面積
 	x = uniform_int_distribution<>(1, 10)(rand);
-	y = uniform_int_distribution<>(1, 5)(rand);
+	y = uniform_int_distribution<>(1, 5)(rand)*3;
 	questions.push_back({
 		"底面の半径" + to_string(x) + "cm、高さ" + to_string(y) + "cmの円錐がある。\n" +
 		"この円錐の体積をXcm^3とする。Xの値を求めよ。",to_string(x * x * y / 3)
@@ -78,6 +78,18 @@ int main()
 	questions.push_back({
 		"さいころを一個ふって" + to_string(x) + "から" + to_string(x + y) + "が出る確率を求めよ。",
 		to_string((y + 1) / z) + "/" + to_string(6 / z)
+		});
+
+	//順列
+	x = uniform_int_distribution<>(3, 7)(rand);
+	y = uniform_int_distribution<>(1, x)(rand);
+	z = 1;
+	for (int i = 0; i < y; i++) {
+		z *= x - i;
+	}
+	questions.push_back({
+		to_string(x) + "人のうち" + to_string(y) + "人を選んで並べる方法は何通りあるか？",
+		to_string(z)
 		});
 
 	cout << "[リクルート試験対策クイズ]\n";
