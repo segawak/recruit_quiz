@@ -1,15 +1,10 @@
+#include "question.h"
 #include<iostream>
 #include<string>
 #include<vector>
 #include<random>
 using namespace std;
 
-// 問題文と答えをまとめる構造体
-struct Question
-{
-	string q;	// 問題文
-	string a;		// 答え
-};
 
 //最大公約数を求める
 int gcd(int a, int b) {
@@ -106,6 +101,15 @@ int main()
 		to_string(x) + "人のうち" + to_string(y) + "人を選ぶ組み合わせは何通りあるか？",
 		to_string(z)
 		});
+
+	//暇つぶし
+	x = uniform_int_distribution<>(1, 10)(rand);
+	y = uniform_int_distribution<>(1, 10)(rand);
+	questions.push_back({
+	to_string(x) + "X^2+" + to_string(y) + "Xを微分しなさい",
+	to_string(x*2)+"X+"+to_string(y)
+		});
+
 
 	cout << "[リクルート試験対策クイズ]\n";
 
