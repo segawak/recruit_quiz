@@ -1,4 +1,5 @@
 #include "exam_japanese.h"
+#include"utility.h"
 using namespace std;
 
 QuestionLIst CreateKanjiExam()
@@ -18,8 +19,10 @@ QuestionLIst CreateKanjiExam()
 	constexpr int quizConst = 5;
 	QuestionLIst questions;
 	questions.reserve(quizConst);
+	const vector<int> indices = CreateRandomIndices(size(data));
+
 	for (int i = 0; i < quizConst; i++) {
-		const auto& e = data[i];
+		const auto& e = data[indices[i]];
 		questions.push_back({
 			"u" + string(e.kanji) + "v‚Ì“Ç‚Ý‚ð‚Ð‚ç‚ª‚È‚Å“š‚¦‚æ",
 			e.reading });
