@@ -9,5 +9,5 @@ struct Question
 };
 
 //–â‘è‚Ì”z—ñ‚ð•\‚·Œ^
-using QuestionLIst = std::_Vector_iterator<Question>;
+using QuestionLIst = std::vector<Question>;
 
