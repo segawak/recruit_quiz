@@ -3,3 +3,6 @@
 
 //Š¿š‚Ì“Ç‚İæ‚è–â‘è‚ğì¬‚·‚é
 QuestionLIst CreateKanjiExam();
+
+//Šµ—p‹å‚ÌˆÓ–¡‚ğ“š‚¦‚é–â‘è‚ğì¬‚·‚é
+QuestionLIst CreateIdiomExam();
