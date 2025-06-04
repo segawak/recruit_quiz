@@ -12,3 +12,6 @@ QuestionLIst CreateHomophoneExam();
 
 //‘Î‹`Œê‚Ì–â‘è‚ğì¬‚·‚é
 QuestionLIst CreateAntnyExam();
+
+//—Ş‹`Œê‚Ì–â‘è‚ğì¬‚·‚é
+QuestionLIst CreateSynonymExam();
