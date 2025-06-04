@@ -265,7 +265,7 @@ QuestionLIst CreateAntnyExam() {
 /*
 	類義語の問題を作成する
 */
-QuestionLIst CreateSynonyExam() {
+QuestionLIst CreateSynonymExam() {
 	const struct {
 		int count;				//要素数
 		const char* kanji[4];	//類義語の配列
