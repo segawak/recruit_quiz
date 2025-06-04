@@ -124,6 +124,9 @@ int main()
 		questions.insert(questions.end(), idiomExam.begin(), idiomExam.end());
 		QuestionLIst homophoneExam = CreateHomophoneExam();
 		questions.insert(questions.end(), homophoneExam.begin(), homophoneExam.end());
+		QuestionLIst antonyExam = CreateAntnyExam();
+		questions.insert(questions.end(), antonyExam.begin(), antonyExam.end());
+
 	}
 
 	for (const auto& e : questions) {
