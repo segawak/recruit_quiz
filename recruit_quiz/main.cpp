@@ -132,6 +132,8 @@ int main()
 	}
 	else if (subject == 3) {
 		questions = CreateEnglishWordExam();
+		QuestionLIst phraseExam = CreateEnglishPharaseExam();
+		questions.insert(questions.end(), phraseExam.begin(), phraseExam.end());
 	}
 
 	for (const auto& e : questions) {

@@ -3,3 +3,6 @@
 
 //‰p’PŒê‚Ì–â‘è‚ğì¬‚·‚é
 QuestionLIst CreateEnglishWordExam();
+
+//‰pŒê‚Ì’èŒ^•¶‚Ì–â‘è‚ğì¬‚·‚é
+QuestionLIst CreateEnglishPharaseExam();
