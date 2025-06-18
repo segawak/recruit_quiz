@@ -18,7 +18,14 @@ QuestionLIst CreatePhysicsExam()
 		int v = uniform_int_distribution<>(0, 10)(rd)* 60 / divisors[i];
 		int t = uniform_int_distribution<>(0, 10)(rd)* divisors[i];
 		questions.push_back({
-			"時速" + to_string(v) + "kmで移動する車がある。\nこの車が" + to_string(v * t / 60) + "km移動するのに蚊㏍る時間を分単位で求めよ" + to_string(t)
+			"時速" + to_string(v) + "kmで移動する車がある。\nこの車が" + to_string(v * t / 60) + "km移動するのに蚊㏍る時間を分単位で求めよ" , to_string(t)
+			});
+
+		i = uniform_int_distribution<>(0, size(divisors) - 1)(rd);
+		v = uniform_int_distribution<>(0, 10)(rd) * 60 / divisors[i];
+		t = uniform_int_distribution<>(0, 10)(rd) * divisors[i];
+		questions.push_back({
+			"ある車が" + to_string(v * t / 60) + "km離れた地点まで移動するのに" + to_string(t) + "分かかった\nこの車の平均時速を求めよ",to_string(v)
 			});
 	}//等速直線運動
 
