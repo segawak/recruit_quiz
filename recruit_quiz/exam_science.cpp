@@ -29,5 +29,26 @@ QuestionLIst CreatePhysicsExam()
 			});
 	}//等速直線運動
 
+	{//等加速度直線運動
+		//公式：v = v0 + at を使って解く問題
+		int v0 = uniform_int_distribution<>(1, 20)(rd);	//初速
+		int a = uniform_int_distribution<>(1, 5) (rd);	//加速度
+		int t = uniform_int_distribution<>(1, 10)(rd);	//移動時間
+		questions.push_back({
+			"秒速" + to_string(v0) + "mで移動していた車が、進行方向に大きさ" + to_string(a) + "m/sで等加速度直線運動を始めた\n加速を始めてから" + to_string(t)
+			+ "秒後までに移動した距離をm単位で求めよ",to_string(v0 * t + a * t * t / 2)
+			});
+
+		//公式：v^2 - v0^2 = 2axを使って解く問題
+		a = -uniform_int_distribution<>(1, 5)(rd);	//加速度
+		t = uniform_int_distribution<>(1, 10) (rd);	//移動時間
+		v0 = -a * t;	//初速
+		questions.push_back({
+			"秒速" + to_string(v0) + "mで移動していた車が、ブレーキをかけたところ" + to_string(v0 * t + a * t * t / 2) + "m進んで停止した。\n"
+			+ "ブレーキの加速度をm/s^2単位で求めよ",to_string(a)
+			});
+
+	}//等加速度直線運動
+
 	return questions;
 }
