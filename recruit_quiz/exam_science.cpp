@@ -18,7 +18,7 @@ QuestionLIst CreatePhysicsExam()
 		int v = uniform_int_distribution<>(0, 10)(rd)* 60 / divisors[i];
 		int t = uniform_int_distribution<>(0, 10)(rd)* divisors[i];
 		questions.push_back({
-			"時速" + to_string(v) + "kmで移動する車がある。\nこの車が" + to_string(v * t / 60) + "km移動するのに蚊㏍る時間を分単位で求めよ" , to_string(t)
+			"時速" + to_string(v) + "kmで移動する車がある。\nこの車が" + to_string(v * t / 60) + "km移動するのにかかる時間を分単位で求めよ" , to_string(t)
 			});
 
 		i = uniform_int_distribution<>(0, size(divisors) - 1)(rd);
@@ -84,6 +84,23 @@ QuestionLIst CreatePhysicsExam()
 
 			});
 	}//重力加速度
+
+	{//浮力
+		int s = uniform_int_distribution<>(5, 20)(rd);//底面積
+		int h = uniform_int_distribution<>(2, 10)(rd);//高さ
+		int v = s * h + 5;//体積を求め四捨五入のため5を加える
+		string answer = to_string(v / 100);//整数部を文字列に変換
+		v /= 10;
+		if (v % 10) {
+			answer += ".";
+			answer += "0" + v % 10;
+		}
+		questions.push_back({
+			"質量100gの物体に働く重力を1Nとする。\n底面積" + to_string(s) + "cm^2、高さ" +
+			to_string(h) + "cmの円柱を完全に水中に沈めた。\n" + "このとき、この円柱に働く浮力はxニュートンである。\n" +
+			"Xの値を小数点以下第２位を四捨五入して求めよ。",
+			answer });
+	}//浮力
 
 	return questions;
 }
