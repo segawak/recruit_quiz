@@ -134,7 +134,7 @@ QuestionLIst CreatePhysicsExam()
 	{//ばね
 		int a = uniform_int_distribution<>(10, 30)(rd);//自然長(cm)
 		int x = uniform_int_distribution<>(1, a / 2)(rd);//自然長からの変化量(cm)
-		int m = uniform_int_distribution<>(1, 20)(rd);//質量(g)
+		int m = uniform_int_distribution<>(1, 20)(rd) * 10;//質量(g)
 		int k = 100 * m / x + 5;//kの100倍を求め、四捨五入のため5を足す
 		string answer = to_string(k / 100);//整数部を文字列に変換
 		k /= 10;//小数点委アk第２位にあたる部分を捨てる
@@ -149,12 +149,12 @@ QuestionLIst CreatePhysicsExam()
 			"このばねの「ばね定数」を小数点以下第２位を四捨五入して求めよ。",answer });
 
 		int k1 = uniform_int_distribution<>(1, 10)(rd);	//ばね定数1(N/m)
-		int k2 = uniform_int_distribution<>(1, 9)(rd);	//ばね定数2(N/m)
+		int k2 = uniform_int_distribution<>(1, 9)(rd) * 10;	//ばね定数2(N/m)
 		if (k2 >= k1) {
 			k2++;
 		}
 		m = uniform_int_distribution<>(1, 10)(rd);//質量(g)
-		k = 100 * m * (k1 + k2) / (k1 * k2) + 5;
+		x = 100 * m * (k1 + k2) / (k1 * k2) + 5;
 		answer = to_string(x / 100);
 		x /= 10;
 		if (x % 10) {
@@ -163,11 +163,27 @@ QuestionLIst CreatePhysicsExam()
 		}
 		questions.push_back({
 			"重力加速度を10m/s^2とする。\nばね定数が" + to_string(k1) + "と" +to_string(k2)+
-			"の2津のばねを直列につなぎ" + to_string(m)+"gの重りをつけて天井から吊り下げた\n" +
+			"の2つのばねを直列につなぎ" + to_string(m)+"gの重りをつけて天井から吊り下げた\n" +
 			"すると、ばねの長さが合わせてXcm伸びて静止した。\n" +
 			"Xの値を小数点以下第２位を四捨五入して求めよ。",answer });
 
-	}//ばね
+		k1 = uniform_int_distribution<>(1, 10)(rd);	//ばね定数1(N/m)
+		k2 = uniform_int_distribution<>(1, 10)(rd);	//ばね定数2(N/m)
+		m = uniform_int_distribution<>(1, 10)(rd) * 10;//質量(g)
+		k = 100 * m / (k1 + k2) / (k1 * k2) + 5;
+		answer = to_string(x / 100);
+		x /= 10;
+		if (x % 10) {
+			answer += '.';
+			answer += '0' + x % 10;
+		}
+		questions.push_back({
+			"重力加速度を10m/s^2とする。\nばね定数が" + to_string(k1) + "と" + to_string(k2) +
+			"の2つのばねを水平な天井に固定し、ばねの下端に木の棒を水平に取り付けた\n" +
+			"この棒の中央に質量" +to_string(m)+"gの重りを取り下げた。\n" +
+			"すると、ばねの長さがそれぞれXcmだけ伸びて静止した。\n" +
+			"Xの値を小数点以下第２位を四捨五入して求めよ。",answer });
+		}//ばね
 
 	return questions;
 }
