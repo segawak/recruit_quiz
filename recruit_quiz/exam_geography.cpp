@@ -43,7 +43,7 @@ QuestionLIst CreatePrefecturesExam()
 	random_device rd;
 
 	//const int type = uniform_int_distribution<>(0, 2)(rd);
-	const int type = 0;
+	const int type = 1;
 
 	switch (type)
 	{
@@ -79,6 +79,26 @@ QuestionLIst CreatePrefecturesExam()
 		}
 		break;
 	case 1:	//都道府県を表す特徴を答える
+		for (int i = 0; i < quizCount; i++) {
+			//正解以外の答えをランダムに選ぶ
+			const int correctIndex = indices[i];
+			vector<int>answers = CreateWrongIndices((int)data.size(), correctIndex);
+
+			//ランダムな位置を正しい番号で上書き
+			const int correctNo = std::uniform_int_distribution<>(1, 3)(rd);
+			answers[correctNo - 1] = correctIndex;
+
+			//問題文を作成
+			string s = "「" + data[correctIndex].name + "」の特徴を持つ都道府県の番号を選べ";
+			for (int j = 1; j < 3; j++) {
+				const auto& features = data[correctIndex].features;
+				const int n = uniform_int_distribution<>(0, (int)features.size() - 1)(rd);
+				s += "\n" + to_string(j + 1) + ":" + features[n];
+			}
+
+			//問題文と答えのペアを問題配列に追加
+			questions.push_back({ s,to_string(correctNo) });
+		}
 		break;
 	case 2:	//都道府県から県庁所在地を答える
 		break;
