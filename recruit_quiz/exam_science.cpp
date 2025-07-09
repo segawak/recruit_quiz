@@ -80,7 +80,7 @@ QuestionLIst CreatePhysicsExam()
 		questions.push_back({
 			"重力加速度を9.8m/s^2とする。\n初速" + to_string(v0) + "m/sで物体を鉛直で投げたとき、" + to_string(t)+
 			"秒後の物体の速度はXm/sである。\n"+
-			"Xノアチアを小数点以下第1位まで求めよ(空気抵抗はないものとする)。",answer
+			"Xの値を小数点以下第1位まで求めよ(空気抵抗はないものとする)。",answer
 
 			});
 	}//重力加速度
@@ -137,13 +137,13 @@ QuestionLIst CreatePhysicsExam()
 		int m = uniform_int_distribution<>(1, 20)(rd) * 10;//質量(g)
 		int k = 100 * m / x + 5;//kの100倍を求め、四捨五入のため5を足す
 		string answer = to_string(k / 100);//整数部を文字列に変換
-		k /= 10;//小数点委アk第２位にあたる部分を捨てる
+		k /= 10;//小数点第２位にあたる部分を捨てる
 		if (k % 10) {
 			answer += '.';
 			answer += '0' + k % 10;
 		}
 		questions.push_back({
-			"重力加速度を10m/s^2とする。\n長さ" + to_string(x) + "cmのばねの先端に" +
+			"重力加速度を10m/s^2とする。\n長さ" + to_string(a) + "cmのばねの先端に" +
 			to_string(m) + "gの重りをつけて、天井から吊り下げた。\nすると、ばねの長さが" +
 			to_string(a + x) + "cmになった。\n" +
 			"このばねの「ばね定数」を小数点以下第２位を四捨五入して求めよ。",answer });

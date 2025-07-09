@@ -2,6 +2,7 @@
 #include "exam_japanese.h"
 #include "exam_english.h"
 #include "exam_science.h"
+#include"exam_geography.h"
 #include<iostream>
 #include<string>
 #include<vector>
@@ -117,7 +118,7 @@ int main()
 	cout << "[リクルート試験対策クイズ]\n";
 
 
-	cout << "教科を選んでください\n1=数学\n2=国語\n3=英語\n4=理科";
+	cout << "教科を選んでください\n1=数学\n2=国語\n3=英語\n4=理科\n5=地理";
 	int subject;
 	cin >> subject;
 	if (subject == 2) {
@@ -138,6 +139,9 @@ int main()
 	}
 	else if (subject == 4) {
 		questions = CreatePhysicsExam();
+	}
+	else if (subject == 5){
+		questions = CreatePrefecturesExam();
 	}
 
 	for (const auto& e : questions) {
