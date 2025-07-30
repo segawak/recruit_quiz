@@ -62,7 +62,7 @@ std::vector<std::string> Split(const std::string& s, char c)
 	//全ての文字をループ処理
 	auto begin = s.begin();		//分割範囲の先頭位置
 	const auto end = s.end();//文字列の終端
-	for (auto p = begin; p != end; ++p) {
+	for (auto& p = begin; p != end; ++p) {
 		//区切り文字の前までを文字列として分割
 		if (*p == c) {
 			v.push_back(string(begin, p));

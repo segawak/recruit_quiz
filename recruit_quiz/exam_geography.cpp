@@ -31,7 +31,7 @@ QuestionLIst CreatePrefecturesExam()
 			if (!ifs) {
 				break;	//ファイル終端に達したので終了
 			}
-			const vector<string> v = Split(s, 's');
+			const vector<string> v = Split(s, ',');
 			data.push_back({ v[0],v[1],vector<string>(v.begin() + 2,v.end()) });
 		}
 	}//都道府県データを読み込む
@@ -43,7 +43,7 @@ QuestionLIst CreatePrefecturesExam()
 	random_device rd;
 
 	//const int type = uniform_int_distribution<>(0, 2)(rd);
-	const int type = 1;
+	const int type = 2;
 
 	switch (type)
 	{
@@ -101,6 +101,27 @@ QuestionLIst CreatePrefecturesExam()
 		}
 		break;
 	case 2:	//都道府県から県庁所在地を答える
+		//と堂宇府県メイト県庁所持地が異なる都道府県名リストを作る
+		vector<pair<string, string>> differentNames;
+		for (const auto& e : data) {
+			//都道府県と県庁所在地名の長さが異なるか末尾の1文字を除く部分文字列が異なる場合、
+			//「都道府県名と県庁所在地が異なるリスト」に追加する
+
+			if (e.name.size() != e.capital.size() ||
+				memcmp(e.name.data(), e.capital.data(), e.name.size()) != 0) {
+				differentNames.push_back({ e.name,e.capital });
+			}
+		}
+
+		//作成したリストからランダムに出題する
+		vector<int>indices = CreateRandomIndices((int)differentNames.size());
+		for (int i = 0; i < quizCount; i++) {
+			const int correctIndex = indices[i];
+			questions.push_back({
+				"「" + differentNames[correctIndex].first + "」の県庁所在地を答えよ",
+				differentNames[correctIndex].second });
+		}
+
 		break;
 	}//switch(type)
 
