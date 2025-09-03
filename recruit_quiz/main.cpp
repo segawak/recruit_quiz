@@ -28,36 +28,40 @@ int main()
 	//to_string(x*2)+"X+"+to_string(y)
 	//	});
 
+	//教科書データ配列
+	static const struct {
+		const char* name;		//教科名
+		QuestionLIst(*create)();//教科名
+	}subjectData[] = {
+		{"数学",CreatemathematicsExam},
+		{"国語",CreatemathematicsExam},
+		{"物理",CreatemathematicsExam},
+		{"地理",CreatemathematicsExam},
+		{"政治",CreatemathematicsExam},
+		{"経済",CreatemathematicsExam},
+	};
 
 	cout << "[リクルート試験対策クイズ]\n";
 
+	cout << "０=総合テスト\n";
+	cout << "教科を選んでください\n";
+	for (int i = 0; i < size(subjectData); i++) {
+		cout << i + 1 << '=' << subjectData[i].name << '\n';
+	}
 
-	cout << "教科を選んでください\n1=数学\n2=国語\n3=英語\n4=理科\n5=地理\n6=政治\n7=経済\n";
 	int subject;
 	cin >> subject;
-
-	if (subject == 1) {
-		questions = CreatemathematicsExam();
+	if (subject > 0 && subject <= size(subjectData)) {
+		questions = subjectData[subject - 1].create();
 	}
-	else if (subject == 2) {
-		questions = CreateJapaneseExam();
+	else if (subject == 0) {
+		//総合テスト
+		questions.clear();
+		for (int i = 0; i < size(subjectData); i++) {
+			QuestionLIst tmp = subjectData[i].create();
+			questions.insert(questions.end(), tmp.begin(), tmp.end());
+		}
 	}
-	else if (subject == 3) {
-		questions = CreateEnglishExam();
-	}
-	else if (subject == 4) {
-		questions = CreatePhysicsExam();
-	}
-	else if (subject == 5){
-		questions = CreatePrefecturesExam();
-	}
-	else if (subject == 6) {
-		questions = CreatePoliticsExam();
-	}
-	else if (subject == 7) {
-		questions = CreateEconomicsExam();
-	}
-
 	for (const auto& e : questions) {
 		cout << e.q << "\n";
 		string answer;
