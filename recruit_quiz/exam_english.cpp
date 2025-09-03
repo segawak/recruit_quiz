@@ -218,3 +218,13 @@ QuestionLIst CreateEnglishPharaseExam() {
 
 	return questions;
 }
+
+QuestionLIst CreateEnglishExam()
+{
+	QuestionLIst questions;
+
+	questions = CreateEnglishWordExam();
+	QuestionLIst phraseExam = CreateEnglishPharaseExam();
+	questions.insert(questions.end(), phraseExam.begin(), phraseExam.end());
+	return questions;
+}

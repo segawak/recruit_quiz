@@ -40,20 +40,10 @@ int main()
 		questions = CreatemathematicsExam();
 	}
 	else if (subject == 2) {
-		questions = CreateKanjiExam();
-		const QuestionLIst idiomExam = CreateIdiomExam();
-		questions.insert(questions.end(), idiomExam.begin(), idiomExam.end());
-		QuestionLIst homophoneExam = CreateHomophoneExam();
-		questions.insert(questions.end(), homophoneExam.begin(), homophoneExam.end());
-		QuestionLIst antonyExam = CreateAntnyExam();
-		questions.insert(questions.end(), antonyExam.begin(), antonyExam.end());
-		QuestionLIst synonymExam = CreateSynonymExam();
-		questions.insert(questions.end(), synonymExam.begin(), synonymExam.end());
+		questions = CreateJapaneseExam();
 	}
 	else if (subject == 3) {
-		questions = CreateEnglishWordExam();
-		QuestionLIst phraseExam = CreateEnglishPharaseExam();
-		questions.insert(questions.end(), phraseExam.begin(), phraseExam.end());
+		questions = CreateEnglishExam();
 	}
 	else if (subject == 4) {
 		questions = CreatePhysicsExam();

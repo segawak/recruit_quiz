@@ -329,3 +329,25 @@ QuestionLIst CreateSynonymExam() {
 
 	return questions;
 }
+
+/*
+	çëåÍÇÃñ‚ëËÇçÏê¨Ç∑ÇÈ
+*/
+QuestionLIst CreateJapaneseExam()
+{
+	QuestionLIst questions;
+	questions = CreateKanjiExam();
+	const QuestionLIst idiomExam = CreateIdiomExam();
+	questions.insert(questions.end(), idiomExam.begin(), idiomExam.end());
+	QuestionLIst homophoneExam = CreateHomophoneExam();
+	questions.insert(questions.end(), homophoneExam.begin(), homophoneExam.end());
+	QuestionLIst antonyExam = CreateAntnyExam();
+	questions.insert(questions.end(), antonyExam.begin(), antonyExam.end());
+	QuestionLIst synonymExam = CreateSynonymExam();
+	questions.insert(questions.end(), synonymExam.begin(), synonymExam.end());
+
+	return questions;
+
+
+
+}

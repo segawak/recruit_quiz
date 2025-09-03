@@ -15,3 +15,6 @@ QuestionLIst CreateAntnyExam();
 
 //—Ş‹`Œê‚Ì–â‘è‚ğì¬‚·‚é
 QuestionLIst CreateSynonymExam();
+
+//‘Œê‚Ì–â‘è‚ğì¬‚·‚é
+QuestionLIst CreateJapaneseExam();
